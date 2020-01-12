@@ -1,14 +1,8 @@
 const router = require('express').Router();
-const fs = require('fs');
+const { cardsAll, cardCreate, cardDelete } = require('../controllers/cards');
 
-router.get('/cards', (req, res) => {
-  fs.readFile('data/cards.json', 'utf8', (error, data) => {
-    if (error != null) {
-      return res.status(500).send({ message: 'На сервере произошла ошибка' });
-    }
-    const json = JSON.parse(data);
-    return res.send({ data: json });
-  });
-});
+router.get('/', cardsAll);
+router.post('/', cardCreate);
+router.delete('/:cardId', cardDelete);
 
 module.exports = router;
