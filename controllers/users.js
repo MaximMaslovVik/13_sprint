@@ -24,3 +24,19 @@ module.exports.getUser = (req, res) => {
     })
     .catch(() => res.status(500).send({ message: 'Произошла ошибка' }));
 };
+/*
+module.exports.patchUserMe = (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { name: '' })
+    .then(user => res.send({ data: user }))
+    .catch(error => res.status(500).send({ message: 'Произошла ошибка' }));
+
+};
+
+router.patch('/:id', (req, res) => {
+  // обновим имя найденного по _id пользователя
+  User.findByIdAndUpdate(req.params.id, { name: 'Виктор Гусев' })
+      .then(user => res.send({ data: user }))
+      .catch(err => res.status(500).send({ message: 'Произошла ошибка' }));
+});
+
+*/
