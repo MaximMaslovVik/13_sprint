@@ -6,10 +6,6 @@ const app = express();
 const { PORT = 3000 } = process.env;
 const users = require('./routes/users');
 const cards = require('./routes/cards');
-const error = require('./routes/app');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -17,6 +13,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.all('/*', (req, res) => res.status(404).send({ message: 'Запрашиваемый ресурс не найден' }));
 
 app.use((req, res, next) => {
   req.user = {
@@ -27,5 +27,4 @@ app.use((req, res, next) => {
 
 app.use('/', users);
 app.use('/', cards);
-app.use('/', error);
 app.listen(PORT, () => {});
