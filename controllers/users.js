@@ -13,16 +13,17 @@ module.exports.createUser = (req, res) => {
     .catch(() => res.status(404).send({ message: 'Произошла ошибка, неудалось создать пользователя' }));
 };
 
+
 module.exports.getUser = (req, res) => {
-  User.findById(req.params.id)
-    .then((id) => {
-      if (!id) {
+  User.findById(req.params.userId)
+    .then((userId) => {
+      if (!userId) {
         res.status(404).send({ message: 'Такого пользователя нет' });
       } else {
-        res.send({ id });
+        res.send({ userId });
       }
     })
-    .catch(() => res.status(500).send({ message: 'Произошла ошибка' }));
+    .catch(() => res.status(500).send({ message: 'Нет пользователя с таким id' }));
 };
 /*
 module.exports.patchUserMe = (req, res) => {
@@ -37,5 +38,6 @@ router.patch('/:id', (req, res) => {
   User.findByIdAndUpdate(req.params.id, { name: 'Виктор Гусев' })
 
 });
+
 
 */
