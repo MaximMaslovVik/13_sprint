@@ -16,7 +16,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.all('/*', (req, res) => res.status(404).send({ message: 'Запрашиваемый ресурс не найден' }));
 
 app.use((req, res, next) => {
   req.user = {
@@ -28,3 +27,4 @@ app.use((req, res, next) => {
 app.use('/', users);
 app.use('/', cards);
 app.listen(PORT, () => {});
+app.all('/*', (req, res) => res.status(404).send({ message: 'Запрашиваемый ресурс не найден' }));
