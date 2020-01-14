@@ -15,7 +15,7 @@ module.exports.createUser = (req, res) => {
 
 
 module.exports.getUser = (req, res) => {
-  User.findById(req.params.userId)
+  User.findById(req.user._id)
     .then((userId) => {
       if (!userId) {
         res.status(404).send({ message: 'Такого пользователя нет' });
@@ -25,6 +25,7 @@ module.exports.getUser = (req, res) => {
     })
     .catch(() => res.status(500).send({ message: 'Нет пользователя с таким id' }));
 };
+
 /*
 module.exports.patchUserMe = (req, res) => {
   User.findByIdAndUpdate(req.params.id, { name: '' })
