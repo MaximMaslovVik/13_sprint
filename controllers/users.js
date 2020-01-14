@@ -35,8 +35,7 @@ module.exports.patchUserMe = (req, res) => {
 router.patch('/:id', (req, res) => {
   // обновим имя найденного по _id пользователя
   User.findByIdAndUpdate(req.params.id, { name: 'Виктор Гусев' })
-      .then(user => res.send({ data: user }))
-      .catch(err => res.status(500).send({ message: 'Произошла ошибка' }));
+
 });
 
 */
