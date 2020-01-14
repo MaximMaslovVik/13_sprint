@@ -13,7 +13,6 @@ module.exports.createUser = (req, res) => {
     .catch(() => res.status(404).send({ message: 'Произошла ошибка, неудалось создать пользователя' }));
 };
 
-
 module.exports.getUser = (req, res) => {
   User.findById(req.user._id)
     .then((userId) => {
