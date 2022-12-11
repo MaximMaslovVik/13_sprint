@@ -31,7 +31,7 @@
     "debug": "^4.1.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "file-loader": "^4.3.0",
     "gh-pages": "~2.0.1",
     "git": "^0.1.5",
